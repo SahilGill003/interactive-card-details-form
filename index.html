@@ -18,7 +18,8 @@
 		<main>
 			<section class="card-section-bg">
 				<div class="card-front">
-					<img class="front-card-img" src="./images/bg-card-front.png" aria-hidden="true">
+					<img class="front-card-img" src="./images/bg-card-front.png" alt="front card background image"
+						aria-hidden="true">
 					<div class="card-content">
 						<div class="card-top"></div>
 						<div class="card-details">
@@ -33,7 +34,8 @@
 					</div>
 				</div>
 				<div class="card-back">
-					<img class="back-card-img" src="./images/bg-card-back.png" aria-hidden="true">
+					<img class="back-card-img" src="./images/bg-card-back.png" alt="back card background image"
+						aria-hidden="true">
 					<div class="card-content small">
 						<p class="cv-number">000</p>
 					</div>
@@ -41,58 +43,61 @@
 			</section>
 			<section class="form-section">
 				<form class="form-grid" action="javascript:;">
-					<label class="uppercase">
+					<label class="uppercase" for="cardName">
 						Cardholder Name
 						<p class="input-wrapper">
-							<input type="text" pattern="[a-zA-Z ]+" placeholder="e.g. Jane Appleseed" name="name"
-								aria-describedby="addressEmpty" required>
+							<input type="text" pattern="[a-zA-Z ]+" placeholder="e.g. Jane Appleseed" aria-describedby="nameEmpty"
+								name="cardName" value="" id="cardName" required>
 						</p>
 						<span>
-							<p id="addressEmpty">Can't be blank</p>
+							<p id="nameEmpty" class="inputEmpty">Can't be blank</p>
 						</span>
 					</label>
-					<label class="uppercase">Card Number
+					<label class="uppercase" for="cardNum">Card Number
 						<p class="input-wrapper">
 							<input type="text" pattern="\d{4}( \d{4}){3}" placeholder="e.g. 1234 5678 9123 0000"
-								aria-describedby="addressError addressEmpty" required>
+								aria-describedby="numError numEmpty" value="" name="cardNumber" id="cardNum" required>
 						</p>
 
 						<span>
-							<p id="addressError">Wrong format, numbers only</p>
-							<p id="addressEmpty">Can't be blank</p>
+							<p id="numError" class="inputError">Wrong format, numbers only</p>
+							<p id="numEmpty" class="inputEmpty">Can't be blank</p>
 						</span>
 					</label>
-					<label class="card-expiry uppercase">exp. date (mm/yy)
-						<fieldset class="container">
-							<p class="input-wrapper"><input type="number" placeholder="MM" pattern="\d{2}" inputmode="numeric"
-									maxlength="2" min="01" max="12" aria-describedby="addressEmpty" required></p>
-							<p class="input-wrapper"><input type="number" placeholder="YY" pattern="\d{2}" inputmode="numeric"
-									maxlength="2" min="23" max="50" aria-describedby="addressEmpty" required></p>
+					<label class="card-expiry-date uppercase">exp. date (mm/yy)
+						<fieldset class="container" id="cardExpiry">
+							<p class="input-wrapper"><input title="card expiry month" type="number" placeholder="MM" pattern="\d{2}"
+									inputmode="numeric" maxlength="2" min="01" max="12" aria-describedby="expiryEmpty" value=""
+									name="cardExpiryMonth" id="cardExpiryMonth" required></p>
+							<p class="input-wrapper"><input title="card expiry year" type="number" placeholder="YY" pattern="\d{2}"
+									inputmode="numeric" maxlength="2" min="23" max="50" aria-describedby="expiryEmpty" value=""
+									name="cardExpiryYear" id="cardExpiryYear" required></p>
 						</fieldset>
 						<span>
-							<p id="addressEmpty" required>Can't be blank</p>
+							<p id="expiryEmpty" class="inputEmpty">Can't be blank</p>
 						</span>
 					</label>
-					<label class="uppercase">cvc
+					<label class="uppercase" for="cvcNum">cvc
 						<p class="input-wrapper"><input type="text" pattern="\d{3}" maxlength="3" inputmode="numeric"
-								placeholder="e.g. 123" aria-describedby="addressEmpty" required>
+								placeholder="e.g. 123" aria-describedby="cvcEmpty" value="" name="cardCvNum" id="cvcNum" required>
 						</p>
 						<span>
-							<p id="addressEmpty">Can't be blank</p>
+							<p id="cvcEmpty" class="inputEmpty">Can't be blank</p>
 						</span>
 					</label>
-					<button class="form-submit-btn" type="submit">
+					<button class="form-submit-btn custom-btn" type="submit">
 						Confirm
 					</button>
 				</form>
+				<article class="submitted-state">
+					<img class="complete-icon" src="./images/icon-complete.svg" alt="complete">
+					<p class="greeting">Thank you!</p>
+					<p class="info">We've added your card details</p>
+					<button class="form-continue-btn custom-btn">Continue</button>
+				</article>
 			</section>
 		</main>
-
-		<!--
-		 Completed state start -->
-		<!-- Thank you!
-		We've added your card details
-		Continue -->
+		<script src="./script.js"></script>
 	</body>
 
 </html>

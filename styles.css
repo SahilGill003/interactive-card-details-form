@@ -64,8 +64,8 @@ input:hover {
   border: none
 }
 
-#addressEmpty,
-#addressError {
+.inputEmpty,
+.inputError {
   display: none;
 }
 
@@ -73,7 +73,24 @@ input:hover {
   background: red;
 }
 
-.input-wrapper:has(input:invalid)+span>#addressError {
+.input-wrapper:has(input:invalid):hover {
+  background: var(--clr-input-border);
+}
+
+.input-wrapper+span {
+  display: flex;
+  flex-direction: column;
+}
+
+fieldset:has(.input-wrapper>input[value=""])+span>.inputEmpty {
+  display: initial;
+}
+
+.input-wrapper:has(input[value=""])+span>.inputEmpty {
+  display: initial;
+}
+
+.input-wrapper:has(input:invalid)+span>.inputError {
   display: initial;
 }
 
@@ -96,6 +113,7 @@ label {
 
 input {
   width: 100%;
+  height: 100%;
 }
 
 
@@ -198,12 +216,17 @@ main {
 .card-number {
   margin-block: 0.5em;
   font-size: 1.1em;
+  letter-spacing: min(0.4vw, 3px);
+  word-spacing: min(0.4vw, 2px);
 }
 
 .front-card-img {}
 
-.form-grid {
+.form-section {
   --padding: 1em;
+}
+
+.form-grid {
   display: grid;
   grid-template-columns: repeat(2, calc(50% - var(--padding)/2));
   column-gap: 0.75em;
@@ -225,26 +248,74 @@ main {
   grid-column: span 2;
 }
 
-.card-expiry {
+.card-expiry-date {
   flex-wrap: wrap;
   flex-direction: row;
   gap: 0.5em;
 }
 
-.card-expiry>.container {
+.card-expiry-date>.container {
   gap: 0.5em;
 }
 
-
 .form-submit-btn {
   grid-column: span 2;
-  padding: var(--padding);
+}
+
+.custom-btn {
   color: white;
+  padding: var(--padding);
   font-weight: bold;
   background-color: var(--clr-very-darkviolet);
   border-radius: 5px;
   border: none;
   text-align: center;
+  cursor: pointer;
+}
+
+.custom-btn:hover {
+  background-color: hsl(278, 68%, 7%);
+}
+
+
+form+.submitted-state {
+  display: none;
+}
+
+form.submitted {
+  display: none;
+}
+
+.submitted+.submitted-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  padding: var(--padding);
+  text-align: center;
+  max-width: 400px;
+  margin-inline: auto;
+}
+
+.complete-icon {
+  margin-bottom: 0.5em;
+  width: 80px;
+}
+
+.greeting {
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.info {
+  color: var(--clr-dark-grayviolet);
+  font-size: 1rem;
+}
+
+.form-continue-btn {
+  margin-top: var(--padding);
+  width: 100%;
 }
 
 @media (min-width:900px) {
